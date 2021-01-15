@@ -1,0 +1,4 @@
+import sys
+res = sorted([[input(), float(input())] for _ in range(int(input()))], key = lambda x : (x[1], x[0]))
+a = sorted(set([i[1] for i in res])) 
+print(*[i[0] for i in res if i[1] == a[1]], sep = "\n")
