@@ -1,0 +1,11 @@
+from functools import reduce
+if __name__ == '__main__':
+    student_marks = {}
+    for _ in range(int(input())):
+       name, *line = input().split()
+       scores = list(map(float, line))
+       student_marks[name] = scores
+    query_name = input()
+    add = lambda a, b : a+b
+    sumi = reduce(add, student_marks[query_name])
+    print("{0:.2f}".format(sumi/len(student_marks[query_name]))) 
