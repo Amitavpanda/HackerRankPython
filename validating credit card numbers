@@ -1,0 +1,38 @@
+check1 = lambda x: x in {"1","2","3","4","5","6","7","8","9","0","-"}
+check2 = lambda x: len(x) == 4
+check3 = lambda x: "" if x == "-" else x
+for _ in range(int(input())):
+    flag1, flag2, flag3, flag4, flag5 = 0, 0, 0, 0, 0
+    flag6 = 1
+    credit = input()
+    if credit[0]=='4' or credit[0]=='5' or credit[0]=='6':
+        flag1 = 1
+    if len(credit) == 16 or len(credit) == 19:
+        flag2 = 1
+    if all([check1(i) for i in credit]):
+        flag3 = 1
+    if "-" in credit:
+        flag4 = 1
+        if all([check2(i) for i in credit.split('-')]):
+            flag5 = 1
+        credit = ''.join([check3(i) for i in credit])
+    count = 0
+    for i in range(len(credit)-1):
+        if count == 3:
+            flag6 = 0
+            break
+        if credit[i] == credit[i+1]:
+            count += 1
+        else:
+            count = 0
+    if flag1 and flag2 and flag3 and flag6:
+        if flag4:
+            if flag5:
+                res = 'Valid'
+            else:
+                res = 'Invalid'
+        else:
+            res = 'Valid'
+    else:
+        res = 'Invalid'
+    print(res)
