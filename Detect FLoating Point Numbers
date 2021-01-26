@@ -1,0 +1,8 @@
+import re
+s = int(input())
+for _ in range(s):
+    number = input()
+    if re.match(r'^[+-]?\d*\.\d+$', number):
+        print('True')
+    else:
+        print('False')
